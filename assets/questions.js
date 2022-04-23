@@ -1,27 +1,27 @@
 const questions = [
     {
-        Q: 'Question 1',
-        A: ['ans5:a','ans1:b','ans1:c','ans1:d'],
-        C: 'ans1:d'
+        Q: 'What does an event listener do?',
+        A: ['Listens for a click','Listens for a scroll','listens for a hover','All thee above'],
+        C: 'All thee above'
     },
     {
-        Q: 'Question 2',
-        A: ['ans2:a','ans2:b','ans2:c','ans2:d'],
-        C: 'ans2:d'
+        Q: 'What does CSS stand for?',
+        A: ['Cascading Styler Sheet','Cascading Style Sheet','Cats Stealing Socks','Cascading Style Strings'],
+        C: 'Cascading Style Sheet'
     },
     {
-        Q: 'Question 3',
-        A: ['ans3:a','ans3:b','ans3:c','ans3:d'],
-        C: 'ans3:d'
+        Q: 'If you wanted to add a countdown clock in JS, what is a correct way to do it?',
+        A: ['setInterval(handleClock,1000)','setInterval: handleClock, 1000;','setTimeClock(handleClock,1000)','SetTimeClock: handleClock, 1000;'],
+        C: 'setInterval(handleClock,1000)'
     },
     {
-        Q: 'Question 4',
-        A: ['ans4:a','ans4:b','ans4:c','ans4:d'],
-        C: 'ans4:d'
+        Q: 'What is 5+5?',
+        A: ['0','5','25','10'],
+        C: '10'
     },
     {
-        Q: 'Question 5',
-        A: ['ans5:a','ans5:b','ans5:c','ans5:d'],
-        C: 'ans5:d'
+        Q: 'How many lives does a cat have?',
+        A: ['1','9','5','They are immortal'],
+        C: '9'
     }
 ]

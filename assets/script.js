@@ -33,7 +33,7 @@
 
 let qI = 0;
 let clockId;
-let time = 60;
+let time = 30;
 let banner = document.querySelector('.banner');
 document.querySelector('#start').addEventListener('click',handleStart);
 
@@ -44,6 +44,7 @@ function handleStart() {
 
 function handleQuestions() {
     if(qI<questions.length){
+        let taskInfoE1 = document.createElement("div");
         const { Q,A,C } = questions[qI];
         qI++; 
         banner.innerHTML = `<h2>${Q}</h2>`;
@@ -52,13 +53,20 @@ function handleQuestions() {
             btn.innerText = ans;
             btn.addEventListener('click', (e) => {
                 if(C == e.target.innerText){
-                    time += 5;
+                    time += 0;
+                    taskInfoE1.className = "markit";
+                    taskInfoE1.innerHTML = "<p>" + "Correct" + "</p>";
+                    setTimeout(handleQuestions,3000);
+                    
                 } else {
-                    time -= 5;
+                    time -= 10;
+                    taskInfoE1.className = "markit";
+                    taskInfoE1.innerHTML = "<p>" + "Incorrect" + "</p>";
+                    setTimeout(handleQuestions,3000);
                 };
-                handleQuestions();
             })
             banner.appendChild(btn);
+            banner.appendChild(taskInfoE1);
         });
     }
 }
