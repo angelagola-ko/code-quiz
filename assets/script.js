@@ -30,7 +30,8 @@
 //  3 Stored Data
 //  a. Store highscores in browser.
 //  b. Grab highscores and present to people.
-
+let score=0;
+let highScore=0;// I dont think I need this. 
 let qI = 0;
 let clockId;
 let time = 30;
@@ -53,23 +54,61 @@ function handleQuestions() {
             btn.innerText = ans;
             btn.addEventListener('click', (e) => {
                 if(C == e.target.innerText){
-                    time += 0;
                     taskInfoE1.className = "markit";
                     taskInfoE1.innerHTML = "<p>" + "Correct" + "</p>";
-                    setTimeout(handleQuestions,3000);
-                    
+                    score +=1;
                 } else {
                     time -= 10;
                     taskInfoE1.className = "markit";
                     taskInfoE1.innerHTML = "<p>" + "Incorrect" + "</p>";
-                    setTimeout(handleQuestions,3000);
                 };
+                setTimeout(handleQuestions,1000);
             })
             banner.appendChild(btn);
             banner.appendChild(taskInfoE1);
-        });
+        }); 
+    };
+
+    if (qI === questions.length) {
+        banner.innerHTML = `<h1>All Done!</h1>
+                            <p>Your final score is ${score}.</p>
+                            <p>Enter initials: <input id='initials'></input></p>
+                            <button onclick='handleSubmit()'>Submit</button>`;
     }
 }
+
+function handleSubmit() {
+    if(localStorage.scores == undefined) localStorage.scores = '[]';
+    let initials = document.getElementById('initials').value;
+    let store = eval(localStorage.scores);
+
+    console.log('store: ',store);
+    store.push({[initials]:score});
+
+    banner.innerHTML = '<h1>High scores</h1><ol>';
+
+    store.forEach(item => {
+        Object.entries(item).forEach(([key,val])=>{
+            banner.innerHTML += `<li>${key}: ${val}</li>`
+        });
+    });
+
+    localStorage.scores = JSON.stringify(store);
+
+    banner.innerHTML += `</ol><p><button>Go Back</button><button>Clear high scores</button></p>`
+};
+
+
+//Create function that stores score
+if (score > parseInt(localStorage.getItem("highscore"))) {
+    localStorage.setItem("highscore", score);
+
+    };
+
+//Create a function that goes to next page "All Done"
+//Your final score is:
+//Enter intials//
+//Submit
 
 function handleClock() {
     time--;
