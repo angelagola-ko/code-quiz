@@ -12,7 +12,7 @@
 // THEN the game is over
 // WHEN the game is over
 // THEN I can save my initials and score
-
+//test
 //  1 Quiz Questions
 //  a. Create a series of questions.
 //  b. Make the answers clickable
@@ -42,7 +42,7 @@ function handleStart() {
     clockId = setInterval(handleClock,1000);
     handleQuestions();
 };
-
+//test
 function handleQuestions() {
     if(qI<questions.length){
         let taskInfoE1 = document.createElement("div");
@@ -95,7 +95,7 @@ function handleSubmit() {
 
     localStorage.scores = JSON.stringify(store);
 
-    banner.innerHTML += `</ol><p><button>Go Back</button><button>Clear high scores</button></p>`
+    banner.innerHTML += `</ol><p><button onclick="parent.location='index.html'">Go Back</button><button>Clear high scores</button></p>`
 };
 
 
