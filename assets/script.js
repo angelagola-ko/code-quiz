@@ -42,7 +42,7 @@ function handleStart() {
     clockId = setInterval(handleClock,1000);
     handleQuestions();
 };
-//test
+
 function handleQuestions() {
     if(qI<questions.length){
         let taskInfoE1 = document.createElement("div");
