@@ -34,7 +34,7 @@ let score=0;
 let highScore=0;// I dont think I need this. 
 let questionInterval = 0;
 let clockId;
-let time = 30;
+let time = 60;
 let banner = document.querySelector('.banner');
 document.querySelector('#start').addEventListener('click',handleStart);
 
@@ -54,7 +54,7 @@ function handleQuestions() {
             btn.addEventListener('click', (e) => {
                 if(Correct == e.target.innerText){
                     taskInfoE1.innerHTML = "<p>" + "Correct" + "</p>";
-                    score +=1;
+                    score =time;
                 } else {
                     time -= 10;
                     taskInfoE1.innerHTML = "<p>" + "Incorrect" + "</p>";
@@ -83,7 +83,7 @@ function handleSubmit() {
     console.log('store: ',store);
     store.push({[initials]:score});
 
-    banner.innerHTML = '<h1>High scores</h1><ol>';
+    banner.innerHTML = '<h1>High Scores</h1><ol>';
 
     store.forEach(item => {
         Object.entries(item).forEach(([key,val])=>{
@@ -94,9 +94,30 @@ function handleSubmit() {
     localStorage.scores = JSON.stringify(store);
 
     banner.innerHTML += `</ol><p><button onclick="parent.location='index.html'">Go Back</button>
-    <button onclick="localStorage.clear()" "handleSubmit()">Clear high scores</button></p>`
+    <button onclick="localStorage.clear()">Clear High Scores</button></p>`
 
 };
+
+let headerbtn= document.querySelector("#highscore");
+document.querySelector('#highScore').addEventListener('click', checkHighScores);
+
+function checkHighScores() {
+    banner.innerHTML = '<h1>High scores</h1><ol>';
+    if(localStorage.scores == undefined) localStorage.scores = '[]';
+    let store = eval(localStorage.scores);
+
+    store.forEach(item => {
+        Object.entries(item).forEach(([key,val])=>{
+            banner.innerHTML += `<li>${key}: ${val}</li>`
+        });
+    localStorage.scores = JSON.stringify(store);
+
+    })
+    banner.innerHTML += `</ol><p><button onclick="parent.location='index.html'">Go Back</button>
+    <button onclick="localStorage.clear()" "handleSubmit()">Clear high scores</button></p>`
+    };
+
+
 
 function handleClock() {
     time--;
