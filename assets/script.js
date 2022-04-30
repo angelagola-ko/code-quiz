@@ -32,7 +32,7 @@
 //  b. Grab highscores and present to people.
 let score=0;
 let highScore=0;// I dont think I need this. 
-let qI = 0;
+let questionInterval = 0;
 let clockId;
 let time = 30;
 let banner = document.querySelector('.banner');
@@ -44,22 +44,20 @@ function handleStart() {
 };
 
 function handleQuestions() {
-    if(qI<questions.length){
+    if(questionInterval<questions.length){
         let taskInfoE1 = document.createElement("div");
-        const { Q,A,C } = questions[qI];
-        qI++; 
-        banner.innerHTML = `<h2>${Q}</h2>`;
-        A.forEach(ans => {
+        const { Question,Answer,Correct } = questions[questionInterval];
+        questionInterval++; 
+        banner.innerHTML = `<h2>${Question}</h2>`;
+        Answer.forEach(ans => {
             let btn = document.createElement('button');
             btn.innerText = ans;
             btn.addEventListener('click', (e) => {
-                if(C == e.target.innerText){
-                    taskInfoE1.className = "markit";
+                if(Correct == e.target.innerText){
                     taskInfoE1.innerHTML = "<p>" + "Correct" + "</p>";
                     score +=1;
                 } else {
                     time -= 10;
-                    taskInfoE1.className = "markit";
                     taskInfoE1.innerHTML = "<p>" + "Incorrect" + "</p>";
                 };
                 setTimeout(handleQuestions,1000);
@@ -69,7 +67,7 @@ function handleQuestions() {
         }); 
     };
 
-    if (qI === questions.length) {
+    if (questionInterval === questions.length) {
         banner.innerHTML = `<h1>All Done!</h1>
                             <p>Your final score is ${score}.</p>
                             <p>Enter initials: <input id='initials'></input></p>
@@ -95,7 +93,9 @@ function handleSubmit() {
 
     localStorage.scores = JSON.stringify(store);
 
-    banner.innerHTML += `</ol><p><button onclick="parent.location='index.html'">Go Back</button><button>Clear high scores</button></p>`
+    banner.innerHTML += `</ol><p><button onclick="parent.location='index.html'">Go Back</button>
+    <button onclick="localStorage.clear()" "handleSubmit()">Clear high scores</button></p>`
+
 };
 
 
