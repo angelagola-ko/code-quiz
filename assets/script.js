@@ -47,7 +47,6 @@ function handleQuestions() {
     if(questionInterval<questions.length){
         let taskInfoE1 = document.createElement("div");
         const { Question,Answer,Correct } = questions[questionInterval];
-        questionInterval++; 
         banner.innerHTML = `<h2>${Question}</h2>`;
         Answer.forEach(ans => {
             let btn = document.createElement('button');
@@ -66,13 +65,14 @@ function handleQuestions() {
             banner.appendChild(taskInfoE1);
         }); 
     };
-
+    
     if (questionInterval === questions.length) {
         banner.innerHTML = `<h1>All Done!</h1>
-                            <p>Your final score is ${score}.</p>
-                            <p>Enter initials: <input id='initials'></input></p>
-                            <button onclick='handleSubmit()'>Submit</button>`;
+        <p>Your final score is ${score}.</p>
+        <p>Enter initials: <input id='initials'></input></p>
+        <button onclick='handleSubmit()'>Submit</button>`;
     }
+    questionInterval++; 
 }
 
 function handleSubmit() {
@@ -97,18 +97,6 @@ function handleSubmit() {
     <button onclick="localStorage.clear()" "handleSubmit()">Clear high scores</button></p>`
 
 };
-
-
-//Create function that stores score
-if (score > parseInt(localStorage.getItem("highscore"))) {
-    localStorage.setItem("highscore", score);
-
-    };
-
-//Create a function that goes to next page "All Done"
-//Your final score is:
-//Enter intials//
-//Submit
 
 function handleClock() {
     time--;
