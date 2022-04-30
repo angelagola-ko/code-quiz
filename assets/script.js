@@ -30,8 +30,7 @@
 //  3 Stored Data
 //  a. Store highscores in browser.
 //  b. Grab highscores and present to people.
-let score=0;
-let highScore=0;// I dont think I need this. 
+let score=0; 
 let questionInterval = 0;
 let clockId;
 let time = 60;
@@ -71,7 +70,9 @@ function handleQuestions() {
         <p>Your final score is ${score}.</p>
         <p>Enter initials: <input id='initials'></input></p>
         <button onclick='handleSubmit()'>Submit</button>`;
+        time=0;
     }
+    
     questionInterval++; 
 }
 
@@ -114,7 +115,7 @@ function checkHighScores() {
 
     })
     banner.innerHTML += `</ol><p><button onclick="parent.location='index.html'">Go Back</button>
-    <button onclick="localStorage.clear()" "handleSubmit()">Clear high scores</button></p>`
+    <button onclick="localStorage.clear()" "handleSubmit()">Clear High Scores</button></p>`
     };
 
 

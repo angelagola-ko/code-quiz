@@ -22,19 +22,24 @@ nav h2 {
 }
 
 .container {
-    width: 90%;
+    width: 50%;
     margin: 10vh auto;
 }
+
 .banner {
     text-align: center;
 }
+
 button {
     background-color: purple;
     color: white;
     padding: 10px;
     border-radius: 8px;
     cursor: pointer;
+    margin: 2px;
+    width: 215px;
 }
+
 
 
 

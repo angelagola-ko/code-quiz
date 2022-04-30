@@ -11,8 +11,8 @@ const questions = [
     },
     {
         Question: 'If you wanted to add a countdown clock in JS, what is a correct way to do it?',
-        Answer: ['setInterval(handleClock,1000)','setInterval: handleClock, 1000;','setTimeClock(handleClock,1000)','SetTimeClock: handleClock, 1000;'],
-        Correct: 'setInterval(handleClock,1000)'
+        Answer: ['setInterval(handleClock,1000) ','setInterval: handleClock, 1000; ','setTimeClock(handleClock,1000) ','SetTimeClock: handleClock, 1000; '],
+        Correct: 'setInterval(handleClock,1000) '
     },
     {
         Question: 'What is 5+5?',
